@@ -30,11 +30,10 @@ from model import GPT, dispositif
 # ─────────────────────────────────────────────
 
 SOURCES = {
-    'Hugo - Les Contemplations'      : 'https://www.gutenberg.org/cache/epub/8050/pg8050.txt',
+    'Hugo - Les Contemplations'      : 'https://www.gutenberg.org/cache/epub/29843/pg29843.txt',
     'Baudelaire - Les Fleurs du Mal' : 'https://www.gutenberg.org/cache/epub/6099/pg6099.txt',
-    'Verlaine - Poèmes Saturniens'   : 'https://www.gutenberg.org/cache/epub/5264/pg5264.txt',
-    'Verlaine - Fêtes Galantes'      : 'https://www.gutenberg.org/cache/epub/5267/pg5267.txt',
-    'Rimbaud - Poésies'              : 'https://www.gutenberg.org/cache/epub/6828/pg6828.txt',
+    'Verlaine - all oeuvres'   : 'https://www.gutenberg.org/cache/epub/15112/pg15112.txt',
+    'Rimbaud - Poésies'              : 'https://www.gutenberg.org/cache/epub/29302/pg29302.txt',
 }
 
 def telecharger_texte(url):
@@ -140,12 +139,12 @@ CONFIG = {
     'mode'              : 'optimisee',
 }
 
-TAILLE_BATCH       = 32
-N_STEPS            = 50000
+TAILLE_BATCH      = 32
+N_STEPS           = 20000   
 TAUX_APPRENTISSAGE = 3e-4
-INTERVALLE_EVAL    = 500
-INTERVALLE_GENE    = 2000
-N_STEPS_EVAL       = 50
+INTERVALLE_EVAL   = 1000   
+INTERVALLE_GENE   = 5000    
+N_STEPS_EVAL      = 20  
 
 modele     = GPT(**CONFIG).to(dispositif)
 optimiseur = torch.optim.AdamW(modele.parameters(), lr=TAUX_APPRENTISSAGE)
